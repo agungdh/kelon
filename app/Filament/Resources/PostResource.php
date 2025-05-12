@@ -37,8 +37,13 @@ class PostResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('title')->label('Judul'),
-                TextColumn::make('content')->label('Isi')->limit(50),
+                TextColumn::make('title')
+                    ->label('Judul')
+                    ->searchable(),
+                TextColumn::make('content')
+                    ->label('Isi')
+                    ->limit(50)
+                    ->searchable(),
             ])
             ->filters([
                 //
