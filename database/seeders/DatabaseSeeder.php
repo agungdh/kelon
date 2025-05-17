@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\Student;
+use App\Models\Teacher;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -31,10 +33,18 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create()->each(function ($user) use ($studentRole) {;
             $user->assignRole($studentRole);
+
+            $student = Student::factory()->make();
+            $student->user_id = $user->id;
+            $student->save();
         });
 
         User::factory(10)->create()->each(function ($user) use ($teacherRole) {;
             $user->assignRole($teacherRole);
+
+            $teacher = Teacher::factory()->make();
+            $teacher->user_id = $user->id;
+            $teacher->save();
         });
 
         User::factory()->create([
