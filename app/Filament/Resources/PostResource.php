@@ -11,9 +11,15 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Auth;
 
 class PostResource extends Resource
 {
+    public static function shouldRegisterNavigation(): bool
+    {
+        return Auth::user()?->hasRole('super_admin');
+    }
+
     protected static ?string $model = Post::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
