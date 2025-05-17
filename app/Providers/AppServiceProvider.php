@@ -22,7 +22,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard();
-
-        FilamentShield::prohibitDestructiveCommands($this->app->isProduction());
     }
 }
