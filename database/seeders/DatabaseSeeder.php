@@ -31,7 +31,7 @@ class DatabaseSeeder extends Seeder
             'guard_name' => 'web',
         ]);
 
-        User::factory(10)->create()->each(function ($user) use ($studentRole) {;
+        User::factory(10)->create()->each(function ($user) use ($studentRole) {
             $user->assignRole($studentRole);
 
             $student = Student::factory()->make();
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
             $student->save();
         });
 
-        User::factory(10)->create()->each(function ($user) use ($teacherRole) {;
+        User::factory(10)->create()->each(function ($user) use ($teacherRole) {
             $user->assignRole($teacherRole);
 
             $teacher = Teacher::factory()->make();

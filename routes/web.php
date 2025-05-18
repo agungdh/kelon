@@ -7,11 +7,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::get('/test', function () {
-    $path = storage_path("app/private/test.mp4");
+    $path = storage_path('app/private/test.mp4');
 
-    if (!file_exists($path)) {
+    if (! file_exists($path)) {
         abort(404);
     }
 
@@ -22,14 +21,14 @@ Route::get('/test', function () {
     }, 200, [
         'Content-Type' => mime_content_type($path),
         'Content-Length' => filesize($path),
-        'Content-Disposition' => 'inline; filename="' . basename($path) . '"',
+        'Content-Disposition' => 'inline; filename="'.basename($path).'"',
     ]);
 });
 
 Route::get('/test2', function (Request $request) {
-    $path = storage_path("app/private/test.mp4");
+    $path = storage_path('app/private/test.mp4');
 
-    if (!file_exists($path)) {
+    if (! file_exists($path)) {
         abort(404);
     }
 
@@ -40,7 +39,7 @@ Route::get('/test2', function (Request $request) {
     $headers = [
         'Content-Type' => mime_content_type($path),
         'Accept-Ranges' => 'bytes',
-        'Content-Disposition' => 'inline; filename="' . basename($path) . '"',
+        'Content-Disposition' => 'inline; filename="'.basename($path).'"',
     ];
 
     // Tangani permintaan Range dari browser/video player
@@ -72,6 +71,7 @@ Route::get('/test2', function (Request $request) {
 
     // Kalau tidak ada Range, kirim semua
     $headers['Content-Length'] = $size;
+
     return response()->stream(function () use ($path) {
         readfile($path);
     }, 200, $headers);

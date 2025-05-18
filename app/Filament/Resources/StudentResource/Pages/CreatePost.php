@@ -4,7 +4,6 @@ namespace App\Filament\Resources\StudentResource\Pages;
 
 use App\Filament\Pages\Concerns\HasRedirectToIndex;
 use App\Filament\Pages\Concerns\HasSaveCancelActions;
-use App\Filament\Resources\PostResource;
 use App\Filament\Resources\StudentResource;
 use App\Models\Student;
 use Filament\Resources\Pages\CreateRecord;
