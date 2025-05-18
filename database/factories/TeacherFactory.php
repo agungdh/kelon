@@ -17,7 +17,6 @@ class TeacherFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
             'number' => fake()->unique()->safeEmail(),
         ];
     }
