@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Student;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class StudentSeeder extends Seeder
@@ -17,14 +16,14 @@ class StudentSeeder extends Seeder
         $studentRole = RoleSeeder::studentRole();
 
         User::factory(100)->create()->each(function ($user) use ($studentRole) {
-            $user->username = 'U' . $user->id;
+            $user->username = 'U'.$user->id;
             $user->save();
 
             $user->assignRole($studentRole);
 
-            $student = new Student();
+            $student = new Student;
             $student->user_id = $user->id;
-            $student->number = 'N' . $user->id;
+            $student->number = 'N'.$user->id;
             $student->save();
         });
     }

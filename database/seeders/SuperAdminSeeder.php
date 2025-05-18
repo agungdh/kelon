@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\SuperAdmin;
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class SuperAdminSeeder extends Seeder
@@ -22,7 +21,7 @@ class SuperAdminSeeder extends Seeder
 
             $user->assignRole($superAdminRole);
 
-            $superAdmin = new SuperAdmin();
+            $superAdmin = new SuperAdmin;
             $superAdmin->user_id = $user->id;
             $superAdmin->save();
         });
