@@ -18,7 +18,7 @@ class TeacherFactory extends Factory
     {
         return [
             'number' => fake()->unique()->numberBetween(100000000, 999999999),
-            'whatsapp_number' => fake()->unique()->e164PhoneNumber(),
+            'whatsapp_number' => '08' . fake()->unique()->numberBetween(1000000000, 9999999999),
         ];
     }
 }
