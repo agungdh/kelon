@@ -11,6 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class StudentResource extends Resource
 {
@@ -34,8 +35,8 @@ class StudentResource extends Resource
                 TextInput::make('number')
                     ->label('Nomor Induk')
                     ->required()
-                    ->unique()
-                    ->unique('users', 'username')
+                    ->unique(ignoreRecord: true)
+                    ->rule(fn($record) => Rule::unique('users', 'username')->ignore($record?->user_id))
                     ->maxLength(255),
             ]);
     }
