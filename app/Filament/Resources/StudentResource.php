@@ -34,6 +34,8 @@ class StudentResource extends Resource
                 TextInput::make('number')
                     ->label('Nomor Induk')
                     ->required()
+                    ->unique()
+                    ->unique('users', 'username')
                     ->maxLength(255),
             ]);
     }
@@ -42,7 +44,7 @@ class StudentResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')
+                TextColumn::make('user.name')
                     ->label('Nama')
                     ->searchable()
                     ->sortable(),
