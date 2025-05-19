@@ -8,7 +8,7 @@ use App\Filament\Resources\StudentResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditPost extends EditRecord
+class EditStudent extends EditRecord
 {
     use HasRedirectToIndex, HasSaveCancelActions;
 

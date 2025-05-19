@@ -9,7 +9,7 @@ use App\Models\Student;
 use Filament\Resources\Pages\CreateRecord;
 use Illuminate\Support\Facades\DB;
 
-class CreatePost extends CreateRecord
+class CreateStudent extends CreateRecord
 {
     use HasRedirectToIndex, HasSaveCancelActions;
 
