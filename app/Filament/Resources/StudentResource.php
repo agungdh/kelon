@@ -38,6 +38,11 @@ class StudentResource extends Resource
                     ->unique(ignoreRecord: true)
                     ->rule(fn($record) => Rule::unique('users', 'username')->ignore($record?->user_id))
                     ->maxLength(255),
+                TextInput::make('whatsapp_number')
+                    ->label('Nomor Whatsapp')
+                    ->required()
+                    ->unique(ignoreRecord: true)
+                    ->maxLength(255),
             ]);
     }
 
@@ -51,6 +56,10 @@ class StudentResource extends Resource
                     ->sortable(),
                 TextColumn::make('number')
                     ->label('Nomor Induk')
+                    ->searchable()
+                    ->sortable(),
+                TextColumn::make('whatsapp_number')
+                    ->label('Nomor Whatsapp')
                     ->searchable()
                     ->sortable(),
             ])

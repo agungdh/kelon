@@ -16,15 +16,14 @@ class StudentSeeder extends Seeder
         $studentRole = RoleSeeder::studentRole();
 
         User::factory(100)->create()->each(function ($user) use ($studentRole) {
-            $user->username = 'U'.$user->id;
-            $user->save();
-
             $user->assignRole($studentRole);
 
-            $student = new Student;
+            $student = Student::factory()->make();
             $student->user_id = $user->id;
-            $student->number = 'N'.$user->id;
             $student->save();
+
+            $user->username = $student->number;
+            $user->save();
         });
     }
 }

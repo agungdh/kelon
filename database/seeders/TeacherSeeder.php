@@ -16,15 +16,14 @@ class TeacherSeeder extends Seeder
         $teacherRole = RoleSeeder::teacherRole();
 
         User::factory(100)->create()->each(function ($user) use ($teacherRole) {
-            $user->username = 'U'.$user->id;
-            $user->save();
-
             $user->assignRole($teacherRole);
 
-            $teacher = new Teacher;
+            $teacher = Teacher::factory()->make();
             $teacher->user_id = $user->id;
-            $teacher->number = 'N'.$user->id;
             $teacher->save();
+
+            $user->username = $teacher->number;
+            $user->save();
         });
     }
 }

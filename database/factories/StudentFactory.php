@@ -17,7 +17,8 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'number' => fake()->unique()->safeEmail(),
+            'number' => fake()->unique()->numberBetween(100000000, 999999999),
+            'whatsapp_number' => fake()->unique()->e164PhoneNumber(),
         ];
     }
 }
