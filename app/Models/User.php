@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return 'username';
     }
+
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+        return true; // Atau logika tertentu, misalnya berdasarkan role
+    }
 }
